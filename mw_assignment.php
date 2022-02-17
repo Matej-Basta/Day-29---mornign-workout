@@ -51,7 +51,7 @@ function greatestDivisor(int $number): ?int
 
     $greatestDivisor = null;
 
-    for ($i = 2; $i < $number; $i++) {
+    for ($i = 2; $i <= intval($number) / 2; $i++) {
         if ($number % $i === 0) {
             $greatestDivisor = $i;
         }
@@ -60,17 +60,27 @@ function greatestDivisor(int $number): ?int
     return $greatestDivisor;
 }
 
-// echo(greatestDivisor(3) ?? 'prime number');
-// echo ('<br />');
-// echo(greatestDivisor(8) ?? 'prime number');
-// echo ('<br />');
-// echo(greatestDivisor(15) ?? 'prime number');
-// echo ('<br />');
-// echo(greatestDivisor(99) ?? 'prime number');
-// echo ('<br />');
-// echo(greatestDivisor(100) ?? 'prime number');
-// echo ('<br />');
-// echo ('<br />');
+// function greatestDivisor2($number)
+// {
+//     for ($i = $number - 1; $i > 1; $i--) {
+//         if ($number % $i === 0) {
+//             return $i;
+//         }
+//     }
+//     return null;
+// }
+
+echo(greatestDivisor(3) ?? 'prime number');
+echo ('<br />');
+echo(greatestDivisor(8) ?? 'prime number');
+echo ('<br />');
+echo(greatestDivisor(15) ?? 'prime number');
+echo ('<br />');
+echo(greatestDivisor(99) ?? 'prime number');
+echo ('<br />');
+echo(greatestDivisor(100) ?? 'prime number');
+echo ('<br />');
+echo ('<br />');
 
 
 
@@ -88,7 +98,7 @@ for ($i = 0;$i < 8; $i++) {
     $row = [];
 
     for ($j = 0; $j < 8; $j++) {
-        $row[] = (($j % 2 === 0 && $i % 2 === 0) || ($j % 2 === 1 && $i % 2 === 1)) ? 0 : 1;
+        $row[] = (($i + $j) % 2) ? 1 : 0;
     }
 
         $board[] = $row;
@@ -96,22 +106,16 @@ for ($i = 0;$i < 8; $i++) {
 
 // @TODO no.4 You can use html template with some css to display good looking chessboard.
 
-echo '<div class="board">';
 foreach ($board as $row) {
-    echo ('<div class="row">');
-
+    echo ('<div style="display:flex;">');
     foreach ($row as $square) {
-        echo ('<span>' . $square . '</span>');
-
+            echo ('<div style="width:50px; height:50px;background-color:' . ($square===1 ? 'gray' : 'black' ). ';"></div>');
     }
-
-    echo ('<div>');
+    echo ('</div>');
 }
-
-echo '</div>';
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -123,4 +127,4 @@ echo '</div>';
 <body>
     
 </body>
-</html>
+</html> -->
